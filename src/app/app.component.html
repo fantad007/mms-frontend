@@ -1,0 +1,75 @@
+<!-- toggle button -->
+<div class="cursor-pointer fixed z-10 top-[34px] left-9" (click)="toggleSidebar()">
+    <i class="far fa-bars text-[#9BA7B5]"></i>
+</div>
+
+<!-- left sidebar -->
+<div class="w-[300px] h-full mr-12 fixed bg-[#171717] text-white top-[0] -left-[300px] [transition:left_0.3s_ease]"
+    [ngClass]="{'sidebar-open': isOpen}">
+
+    <!-- master card logo -->
+    <div class="p-9 flex justify-between items-center">
+        <div></div>
+        <a href="/" class="flex">
+            <div class="w-[18px] h-[18px] rounded-full bg-[#5f72e4]"></div>
+            <div class="w-[18px] h-[18px] rounded-full bg-[#fb6340] ml-[-5px] opacity-65"></div>
+        </a>
+    </div>
+
+    <!-- account info -->
+    <div
+        class="flex justify-between items-center py-6 px-9 border-t-[0.5px] [border-top-style:dashed] border-t-[#e5e7eb] border-b-[0.5px] [border-bottom-style:dashed] border-b-[#e5e7eb]">
+        <div class="flex items-center">
+            <div class="w-8 h-8 rounded-lg bg-slate-400"></div>
+            <div class="ml-3">
+                <p class="text-sm !m-0">Dương Dũng</p>
+                <p class="text-[10px] text-[#9BA7B5] !m-0">Java Developer</p>
+            </div>
+        </div>
+        <div
+            class="w-7 h-7 flex items-center justify-center hover:duration-700 cursor-pointer rounded-full hover:bg-slate-600">
+            <i class="far fa-cog text-[#9BA7B5] mt-[1px] ml-[0.5px]"></i>
+        </div>
+    </div>
+
+    <!-- function categories -->
+    <div class="px-9 py-5 text-sm text-[#9BA7B5]">
+        <div class="py-5 hover:text-white cursor-pointer flex items-center">
+            <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-coins text-base"></i></div>
+            <a class="ml-3" href="">Thu/Chi</a>
+        </div>
+        <div class="py-5 hover:text-white cursor-pointer flex items-center">
+            <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-university text-base"></i>
+            </div>
+            <a class="ml-3" href="">Chuyển khoản</a>
+        </div>
+        <div class="py-5 hover:text-white cursor-pointer flex items-center">
+            <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-wallet text-base"></i></div>
+            <a class="ml-3" href="/wallets">Ví/Tài khoản</a>
+        </div>
+        <div class="py-5 hover:text-white cursor-pointer flex items-center">
+            <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-list-alt text-base"></i></div>
+            <a class="ml-3" href="">Danh mục</a>
+        </div>
+        <div class="py-5 hover:text-white cursor-pointer flex items-center">
+            <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-ballot-check text-base"></i>
+            </div>
+            <a class="ml-3" href="">Kế hoạch chi tiêu</a>
+        </div>
+        <div class="py-5 hover:text-white cursor-pointer flex items-center">
+            <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-flask-potion text-base"></i>
+            </div>
+            <a class="ml-3" href="">Nguyên tắc 6 hũ</a>
+        </div>
+        <div class="py-5 hover:text-white cursor-pointer flex items-center">
+            <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-analytics text-base"></i>
+            </div>
+            <a class="ml-3" href="">Thống kê</a>
+        </div>
+    </div>
+</div>
+
+<!-- right content -->
+<div class="pl-[350px] pr-[50px] [transition:0.3s_ease]" [ngClass]="{'content-open': !isOpen}">
+    <router-outlet></router-outlet>
+</div>

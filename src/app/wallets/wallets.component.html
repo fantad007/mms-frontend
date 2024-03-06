@@ -1,0 +1,167 @@
+<div class="flex flex-col py-[34px] gap-16">
+
+    <!-- wallet page header -->
+    <div class="w-full flex justify-between items-center">
+        <div>
+            <p class="font-extrabold">Ví/Tài khoản</p>
+            <p class="text-xs text-[#9BA7B5]">Quản lý thông tin ví/tài khoản</p>
+        </div>
+        <div class="flex items-center gap-3">
+            <div
+                class="w-[47px] h-[47px] rounded-2xl flex justify-center items-center border-[1px] border-[solid] border-[#e7e5e4]">
+                <i class="far fa-user text-[#9BA7B5] mt-[1px] ml-[0.5px]"></i>
+            </div>
+            <div
+                class="w-[47px] h-[47px] rounded-2xl flex justify-center items-center border-[1px] border-[solid] border-[#e7e5e4]">
+                <i class="far fa-cog text-[#9BA7B5] mt-[1px] ml-[0.5px]"></i>
+            </div>
+            <div
+                class="w-[47px] h-[47px] rounded-2xl flex justify-center items-center border-[1px] border-[solid] border-[#e7e5e4]">
+                <i class="far fa-bell text-[#9BA7B5] mt-[1px] ml-[0.5px]"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full flex justify-between gap-8">
+
+        <!-- payment balance -->
+        <div class="relative flex-auto block py-8 px-9 bg-[#171717] rounded-3xl">
+            <div class="m-0 z-20 h-full relative">
+                <div class="relative z-20 w-3/4">
+                    <p class="text-2xl font-semibold text-white">Số dư thanh toán</p>
+                    <p class="mb-7 text-xs text-white">Tổng tiền từ các ví/tài khoản</p>
+                </div>
+                <div class="xl:gap-4 sm:flex-row">
+                    <p
+                        class="absolute bottom-[-3px] inline-block shrink-0 text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-[.95rem] transition-colors duration-150 ease-in-out text-white bg-white/[.15] shadow-none [border:_0] px-5 py-3.5 hover:bg-white/25 active:bg-white/25 focus:bg-white/25">
+                        1.796.820 đ
+                    </p>
+                </div>
+            </div>
+            <img src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/riva-dashboard-tailwind/img/bonus.png"
+                class="bottom-0 absolute mr-3 end-0 h-[200px] opacity-40 z-10" alt="" />
+        </div>
+
+        <!-- wallets activity -->
+        <div
+            class="relative w-72 flex flex-col min-w-0 break-words bg-gray-100 border-0 bg-clip-border rounded-2xl mb-5">
+            <div class="px-9 pt-5 flex justify-between items-stretch flex-wrap min-h-[70px] pb-0 bg-transparent">
+                <div class="flex flex-col items-start justify-center m-2 ml-0 font-medium text-xl/normal text-dark">
+                    <span class="text-dark text-5xl/none font-semibold mr-2 tracking-[-0.115rem]">5</span>
+                    <span class="pt-1 font-medium text-dark text-lg/normal">Ví/tài khoản đang hoạt động</span>
+                </div>
+            </div>
+            <div class="flex items-end flex-auto py-8 pt-0 px-9">
+                <div class="items-center w-full mt-3">
+                    <div class="rounded-2xl h-[8px] w-full bg-[#171717]">
+                        <div class="rounded-2xl bg-dark w-[85%] h-[8px]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- list of wallets  -->
+    <div class="w-full">
+        <div>
+            <p class="font-extrabold">Ví/Tài khoản</p>
+        </div>
+        <div class="border border-dashed bg-clip-border rounded-2xl border-stone-200 px-9 py-8">
+            <div class="flex justify-between items-center px-5">
+                <div class="flex items-center gap-10">
+                    <div class="py-5">
+                        <p class="font-semibold">Tất cả ví/tài khoản</p>
+                        <p class="text-xs text-[#9BA7B5] !mb-0">Ví/tài khoản đang hoạt động</p>
+                    </div>
+                    <div>
+                        <span class="relative">
+                            <i class="far fa-search absolute top-[3px] left-[16px] text-[#9BA7B5]"></i>
+                            <input class="pl-10 pr-2 py-[10px] border-[1px] border-[solid] border-[#e7e5e4] rounded-2xl"
+                                type="text" placeholder="Tìm kiếm..." />
+                        </span>
+                    </div>
+                </div>
+                <div class="bg-[#f2f3f4] px-[12px] py-[8px] rounded-[10px] cursor-pointer text-xs hover:bg-[#d5dae0]">
+                    Thêm ví/tài khoản
+                </div>
+            </div>
+            <div>
+                <div class="relative overflow-x-auto">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">Tên ví/tài khoản</th>
+                                <th scope="col" class="px-6 py-3">Số dư khả dụng</th>
+                                <th scope="col" class="px-6 py-3 text-left">Ngày tạo</th>
+                                <th scope="col" class="px-6 py-3 text-right">Ngày cập nhật</th>
+                                <th scope="col" class="px-6 py-3 text-center">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    Tiền mặt
+                                </th>
+                                <td class="px-6 py-4">500.000 đ</td>
+                                <td class="px-6 py-4 text-left">
+                                    <span class="px-[12px] py-[8px] rounded-[10px] text-[#f8a13e] bg-[#fef6ec]">
+                                        <i class="far fa-clock mt-[2px] mr-1"></i><span>01 - 03 - 2024</span>
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <span class="px-[12px] py-[8px] rounded-[10px] text-[#4caf50] bg-[#edf7ed]">
+                                        <i class="far fa-clock mt-[2px] mr-1"></i><span>06 - 03 - 2024</span>
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 flex justify-center items-center gap-3">
+                                    <i class="far fa-pencil-alt"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </td>
+                            </tr>
+                            <tr class="bg-white border-b">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    Techcombank
+                                </th>
+                                <td class="px-6 py-4">450.000 đ</td>
+                                <td class="px-6 py-4 text-left">
+                                    <span class="px-[12px] py-[8px] rounded-[10px] text-[#f8a13e] bg-[#fef6ec]">
+                                        <i class="far fa-clock mt-[2px] mr-1"></i><span>01 - 03 - 2024</span>
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <span class="px-[12px] py-[8px] rounded-[10px] text-[#4caf50] bg-[#edf7ed]">
+                                        <i class="far fa-clock mt-[2px] mr-1"></i><span>06 - 03 - 2024</span>
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 flex justify-center items-center gap-3">
+                                    <i class="far fa-pencil-alt"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </td>
+                            </tr>
+                            <tr class="bg-white">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    Bidv
+                                </th>
+                                <td class="px-6 py-4">50.000 đ</td>
+                                <td class="px-6 py-4 text-left">
+                                    <span class="px-[12px] py-[8px] rounded-[10px] text-[#f8a13e] bg-[#fef6ec]">
+                                        <i class="far fa-clock mt-[2px] mr-1"></i><span>01 - 03 - 2024</span>
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <span class="px-[12px] py-[8px] rounded-[10px] text-[#4caf50] bg-[#edf7ed]">
+                                        <i class="far fa-clock mt-[2px] mr-1"></i><span>06 - 03 - 2024</span>
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 flex justify-center items-center gap-3">
+                                    <i class="far fa-pencil-alt"></i>
+                                    <i class="far fa-trash-alt"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+.sidebar-open {
+    left: 0;
+}
+
+.content-open {
+    transition: 0.3s ease;
+    padding-left: 100px;
+    padding-right: 100px;
+}
