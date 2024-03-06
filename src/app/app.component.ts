@@ -10,6 +10,8 @@ export class AppComponent {
 
   isOpen: boolean = true;
 
+  currentYear: number = new Date().getFullYear();
+
   toggleSidebar() {
     this.isOpen = !this.isOpen;
   }
