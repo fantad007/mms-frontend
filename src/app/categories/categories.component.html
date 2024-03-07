@@ -27,8 +27,8 @@
         <!-- list of category -->
         <div>
             <div class="flex-auto block py-8 px-9 bg-gray-100 rounded-3xl">
-                <div class="m-0 z-20 h-full relative">
-                    <div class="relative z-20 w-3/4">
+                <div class="m-0 h-full relative">
+                    <div class="relative w-3/4">
                         <p class="text-2xl font-semibold">Danh sách danh mục</p>
                         <p class="mb-7 text-xs">Tất cả các danh mục thu/chi</p>
                     </div>
@@ -38,12 +38,16 @@
             <!-- filter categories throught by earning and spending -->
             <div class="mt-[34px] px-[12px] py-[8px] text-base flex gap-3">
                 <button
-                    class="w-[40px] h-[40px] rounded-xl flex justify-center items-center border-[1px] border-[solid] border-[#edf7ed] hover:bg-[#edf7ed]">
-                    <i class="far fa-coins text-[#4caf50] mt-[1px] ml-[0.5px]"></i>
+                    class="w-[40px] h-[40px] rounded-xl flex justify-center items-center border-[1px] border-solid border-sky-100 hover:bg-sky-200 hover:border-sky-200 hover:duration-700">
+                    <i class="far fa-filter text-sky-500 mt-[1px] ml-[0.5px]"></i>
                 </button>
                 <button
-                    class="w-[40px] h-[40px] rounded-xl flex justify-center items-center border-[1px] border-[solid] border-red-100 hover:bg-red-100">
-                    <i class="far fa-coin text-red-700 mt-[1px] ml-[0.5px]"></i>
+                    class="flex justify-center items-center gap-1 bg-[#edf7ed] text-[#4caf50] px-[12px] py-[8px] rounded-[10px] cursor-pointer text-xs hover:bg-[#d2f9d2]">
+                    <i class="far fa-sack-dollar mt-[2px]"></i> Danh sách thu
+                </button>
+                <button
+                    class="flex justify-center items-center gap-1 bg-red-100 text-red-700 px-[12px] py-[8px] rounded-[10px] cursor-pointer text-xs hover:bg-red-200">
+                    <i class="far fa-sack mt-[2px]"></i> Danh sách chi
                 </button>
             </div>
 
@@ -51,9 +55,9 @@
             <div class="border border-dashed bg-clip-border rounded-2xl border-stone-200 px-9 py-8">
                 <div class="flex justify-between items-center px-5">
                     <div class="py-5">
-                        <span class="relative">
+                        <span class="relative z-0">
                             <i class="far fa-search absolute top-[3px] left-[16px] text-[#9BA7B5]"></i>
-                            <input class="pl-10 pr-2 py-[10px] border-[1px] border-[solid] border-[#e7e5e4] rounded-2xl"
+                            <input class="pl-10 pr-2 py-[10px] border-[1px] border-solid border-[#e7e5e4] rounded-2xl"
                                 type="text" placeholder="Tìm kiếm..." />
                         </span>
                     </div>
@@ -152,7 +156,7 @@
         <!-- change frequency -->
         <div>
             <div
-                class="relative w-72 flex flex-col min-w-0 break-words bg-[#171717] border-0 bg-clip-border rounded-2xl mb-5">
+                class="relative w-72 flex flex-col min-w-0 break-words bg-amber-700 border-0 bg-clip-border rounded-2xl mb-5">
                 <div class="px-9 pt-5 flex justify-between items-stretch flex-wrap min-h-[70px] pb-0 bg-transparent">
                     <div class="flex flex-col items-start justify-center m-2 ml-0 font-medium text-xl/normal text-dark">
                         <span class="text-gray-100 text-5xl/none font-semibold mr-2 tracking-[-0.115rem]"><i
