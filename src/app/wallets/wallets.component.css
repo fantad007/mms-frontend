@@ -1,0 +1,7 @@
+.table-container::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+.last-row-no-border {
+    border-bottom: none;
+}
