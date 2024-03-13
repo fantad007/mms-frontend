@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { WalletDialogComponent } from './wallet-dialog/wallet-dialog.component';
+import { MessageboxComponent } from '../messagebox/messagebox.component';
 
 @Component({
   selector: 'app-wallets',
@@ -40,7 +41,26 @@ export class WalletsComponent implements OnInit {
   getAll(): void {
     this.http.get<any[]>(this.apiUrl + '/wallets').subscribe((res) => {
       this.wallets = res;
-      console.log('wallets', this.wallets);
+    });
+  }
+
+  messageBox(id: number): void {
+    this.http.get<any>(this.apiUrl + '/wallet/' + id).subscribe((res) => {
+      let dialogRef = this.dialog.open(MessageboxComponent, {
+        width: '500px',
+        height: '200px',
+        enterAnimationDuration: 500,
+        exitAnimationDuration: 500,
+        disableClose: true,
+        data: {
+          id: id,
+          message: 'Bạn có chắc chắn muốn xoá ví ' + res.name + ' không?',
+        },
+      });
+      dialogRef.afterClosed().subscribe(() => {});
+      dialogRef.componentInstance.onClose = () => {
+        this.getAll();
+      };
     });
   }
 }
