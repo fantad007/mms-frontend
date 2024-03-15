@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { WalletDialogComponent } from './wallet-dialog/wallet-dialog.component';
 import { MessageboxComponent } from '../messagebox/messagebox.component';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-wallets',
@@ -13,9 +14,15 @@ import { MessageboxComponent } from '../messagebox/messagebox.component';
 export class WalletsComponent implements OnInit {
   private apiUrl = environment.apiUrl;
 
-  wallets: any[] = [];
+  public wallets: any[] = [];
 
-  constructor(private http: HttpClient, private dialog: MatDialog) {}
+  public totalBalance: string = '0';
+
+  constructor(
+    private http: HttpClient,
+    private dialog: MatDialog,
+    private decimalPipe: DecimalPipe
+  ) {}
 
   ngOnInit(): void {
     this.getAll();
@@ -32,16 +39,34 @@ export class WalletsComponent implements OnInit {
         id: id,
       },
     });
-    dialogRef.afterClosed().subscribe(() => {});
-    dialogRef.componentInstance.onClose = () => {
-      this.getAll();
-    };
+    dialogRef.afterClosed().subscribe({
+      next: () => {
+        this.getAll();
+      },
+    });
   }
 
   getAll(): void {
     this.http.get<any[]>(this.apiUrl + '/wallets').subscribe((res) => {
       this.wallets = res;
+      this.getTotalBalance();
     });
+  }
+
+  getTotalBalance(): void {
+    this.http
+      .get<number>(this.apiUrl + '/wallets/total-balance')
+      .subscribe((res) => {
+        this.totalBalance = this.formatNumber(res);
+        if (this.totalBalance === '') {
+          this.totalBalance = '0';
+        }
+      });
+  }
+
+  formatNumber(numberToFormat: number | null): string {
+    const formatted = this.decimalPipe.transform(numberToFormat, '1.0-0');
+    return typeof formatted === 'string' ? formatted : '';
   }
 
   messageBox(id: number): void {
@@ -54,13 +79,16 @@ export class WalletsComponent implements OnInit {
         disableClose: true,
         data: {
           id: id,
+          name: 'ví ' + res.name,
           message: 'Bạn có chắc chắn muốn xoá ví ' + res.name + ' không?',
+          url: '/wallet/',
         },
       });
-      dialogRef.afterClosed().subscribe(() => {});
-      dialogRef.componentInstance.onClose = () => {
-        this.getAll();
-      };
+      dialogRef.afterClosed().subscribe({
+        next: () => {
+          this.getAll();
+        },
+      });
     });
   }
 }

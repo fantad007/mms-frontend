@@ -34,7 +34,7 @@
                 <div class="xl:gap-4 sm:flex-row">
                     <p
                         class="absolute bottom-[-3px] inline-block shrink-0 text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-[.95rem] transition-colors duration-150 ease-in-out text-white bg-white/[.15] shadow-none [border:_0] px-5 py-3.5 hover:bg-white/25 active:bg-white/25 focus:bg-white/25">
-                        1.796.820 đ
+                        {{ totalBalance }} đ
                     </p>
                 </div>
             </div>
@@ -47,8 +47,13 @@
             class="relative w-72 flex flex-col min-w-0 break-words bg-gray-100 border-0 bg-clip-border rounded-2xl mb-5">
             <div class="px-9 pt-5 flex justify-between items-stretch flex-wrap min-h-[70px] pb-0 bg-transparent">
                 <div class="flex flex-col items-start justify-center m-2 ml-0 font-medium text-xl/normal text-dark">
-                    <span class="text-dark text-5xl/none font-semibold mr-2 tracking-[-0.115rem]">{{ wallets.length
-                        }}</span>
+                    <ng-container *ngIf="wallets">
+                        <span class="text-dark text-5xl/none font-semibold mr-2 tracking-[-0.115rem]">{{ wallets.length
+                            }}</span>
+                    </ng-container>
+                    <ng-container *ngIf="!wallets">
+                        <span class="text-dark text-5xl/none font-semibold mr-2 tracking-[-0.115rem]">0</span>
+                    </ng-container>
                     <span class="pt-1 font-medium text-dark text-lg/normal">Ví/tài khoản đang hoạt động</span>
                 </div>
             </div>
@@ -87,42 +92,44 @@
             <!-- table list of wallet  -->
             <div>
                 <div class="table-container relative overflow-x-auto">
-                    <p-table [value]="wallets"
-                        class="min-w-[900px] w-full text-sm text-left rtl:text-right text-gray-500">
-                        <ng-template pTemplate="header">
-                            <tr class="text-xs text-gray-700 uppercase bg-gray-50">
-                                <th scope="col" class="px-6 py-3">Tên ví/tài khoản</th>
-                                <th scope="col" class="px-6 py-3">Số dư khả dụng</th>
-                                <th scope="col" class="px-6 py-3 text-left">Ngày tạo</th>
-                                <th scope="col" class="px-6 py-3 text-right">Ngày cập nhật</th>
-                                <th scope="col" class="px-6 py-3 text-center">Thao tác</th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-wallet let-rowIndex="rowIndex">
-                            <tr class="bg-white" [ngClass]="{'border-b': rowIndex !== wallets.length - 1}">
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    {{ wallet.name }}
-                                </th>
-                                <td class="px-6 py-4">{{ wallet.balance }} đ</td>
-                                <td class="px-6 py-4 text-left">
-                                    <span class="px-[12px] py-[8px] rounded-[10px] text-[#f8a13e] bg-[#fef6ec]">
-                                        <i class="far fa-clock mt-[2px] mr-1"></i>
-                                        <span>{{ wallet.createdAt | date: 'dd - MM - yyyy' }}</span>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <span class="px-[12px] py-[8px] rounded-[10px] text-[#4caf50] bg-[#edf7ed]">
-                                        <i class="far fa-clock mt-[2px] mr-1"></i>
-                                        <span>{{ wallet.updatedAt | date: 'dd - MM - yyyy' }}</span>
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 flex justify-center items-center gap-3">
-                                    <i class="far fa-pencil-alt cursor-pointer"></i>
-                                    <i class="far fa-trash-alt cursor-pointer" (click)="messageBox(wallet.id)"></i>
-                                </td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
+                    <ng-container *ngIf="wallets">
+                        <p-table [value]="wallets"
+                            class="block min-w-[900px] w-full text-sm text-left rtl:text-right text-gray-500">
+                            <ng-template pTemplate="header">
+                                <tr class="text-xs text-gray-700 uppercase bg-gray-50">
+                                    <th scope="col" class="px-6 py-3">Tên ví/tài khoản</th>
+                                    <th scope="col" class="px-6 py-3">Số dư khả dụng</th>
+                                    <th scope="col" class="px-6 py-3 text-left">Ngày tạo</th>
+                                    <th scope="col" class="px-6 py-3 text-right">Ngày cập nhật</th>
+                                    <th scope="col" class="px-6 py-3 text-center">Thao tác</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-wallet let-rowIndex="rowIndex">
+                                <tr class="bg-white" [ngClass]="{'border-b': rowIndex !== wallets.length - 1}">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        {{ wallet.name }}
+                                    </th>
+                                    <td class="px-6 py-4">{{ formatNumber(wallet.balance) }} đ</td>
+                                    <td class="px-6 py-4 text-left">
+                                        <span class="px-[12px] py-[8px] rounded-[10px] text-[#f8a13e] bg-[#fef6ec]">
+                                            <i class="far fa-clock mt-[2px] mr-1"></i>
+                                            <span>{{ wallet.createdAt | date: 'dd - MM - yyyy' }}</span>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <span class="px-[12px] py-[8px] rounded-[10px] text-[#4caf50] bg-[#edf7ed]">
+                                            <i class="far fa-clock mt-[2px] mr-1"></i>
+                                            <span>{{ wallet.updatedAt | date: 'dd - MM - yyyy' }}</span>
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 flex justify-center items-center gap-3">
+                                        <i class="far fa-pencil-alt cursor-pointer"></i>
+                                        <i class="far fa-trash-alt cursor-pointer" (click)="messageBox(wallet.id)"></i>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </ng-container>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatDialogModule } from '@angular/material/dialog';
@@ -32,6 +32,9 @@ import { MessageboxComponent } from '../messagebox/messagebox.component';
 
     // primeng
     TableModule,
+  ],
+  providers: [
+    DecimalPipe, // Add DecimalPipe to providers array
   ],
 })
 export class ManagementModule {}

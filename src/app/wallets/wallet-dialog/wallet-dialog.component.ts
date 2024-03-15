@@ -13,8 +13,6 @@ import { environment } from 'src/environments/environment';
 export class WalletDialogComponent implements OnInit {
   private apiUrl = environment.apiUrl;
 
-  onClose: Function = () => {};
-
   walletForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -37,7 +35,6 @@ export class WalletDialogComponent implements OnInit {
       name: this.walletForm.controls['name'].value,
       balance: this.walletForm.controls['balance'].value,
     };
-    console.log(walletParam);
     if (!this.data.id) {
       this.http.post<any>(this.apiUrl + '/wallet', walletParam).subscribe({
         next: () => {
