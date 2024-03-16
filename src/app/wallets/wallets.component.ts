@@ -81,6 +81,7 @@ export class WalletsComponent implements OnInit {
           id: id,
           name: 'ví ' + res.name,
           message: 'Bạn có chắc chắn muốn xoá ví ' + res.name + ' không?',
+          subMessage: '(Sau khi xoá, số dư thanh toán sẽ được cập nhật lại)',
           url: '/wallet/',
         },
       });
