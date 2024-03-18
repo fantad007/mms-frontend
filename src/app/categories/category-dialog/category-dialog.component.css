@@ -1,0 +1,21 @@
+::ng-deep .mdc-radio__background::before {
+    background-color: transparent !important;
+}
+
+::ng-deep .income .mdc-radio__outer-circle {
+    background-color: #edf7ed !important;
+    border-color: #edf7ed !important;
+}
+
+::ng-deep .income .mdc-radio__inner-circle {
+    border-color: #4caf50 !important;
+}
+
+::ng-deep .expenditure .mdc-radio__outer-circle {
+    background-color: #fee2e2 !important;
+    border-color: #fee2e2 !important;
+}
+
+::ng-deep .expenditure .mdc-radio__inner-circle {
+    border-color: #b91c1c !important;
+}

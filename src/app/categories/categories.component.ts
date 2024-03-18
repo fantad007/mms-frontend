@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { MessageboxComponent } from '../messagebox/messagebox.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CategoryDialogComponent } from './category-dialog/category-dialog.component';
 
 @Component({
   selector: 'app-categories',
@@ -23,6 +24,24 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+  }
+
+  addCategory(id: number | null): void {
+    let dialogRef = this.dialog.open(CategoryDialogComponent, {
+      width: '350px',
+      height: 'fit-content',
+      enterAnimationDuration: 500,
+      exitAnimationDuration: 500,
+      disableClose: true,
+      data: {
+        id: id,
+      },
+    });
+    dialogRef.afterClosed().subscribe({
+      next: () => {
+        this.getAll();
+      },
+    });
   }
 
   getAll(): void {

@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="h-full flex flex-col justify-center items-center gap-3">
-                <p class="font-extrabold text-white text-xl !m-0">VÍ/TÀI KHOẢN</p>
+                <p class="font-extrabold text-white text-xl !m-0">DANH MỤC</p>
                 <p class="!m-0 text-white">Hộp thêm mới/cập nhật</p>
             </div>
             <div class="w-8 h-full justify-start items-start">
@@ -18,23 +18,32 @@
         </div>
     </div>
     <div>
-        <form [formGroup]="walletForm">
+        <form [formGroup]="categoryForm">
             <div class="mt-5 mb-5">
-                <label for="size-name" class="block mb-2 text-sm font-medium text-gray-900">Tên ví</label>
+                <label class="block mb-2 text-sm font-medium text-gray-900">Loại danh mục</label>
+                <mat-radio-group class="flex gap-8 justify-center items-center" aria-label="Select an option"
+                    (change)="onRadioChange($event)">
+                    <mat-radio-button class="income" value="0" checked><span
+                            class="font-bold font-['Lexend',_sans-serif] text-[#4caf50]">Thu</span></mat-radio-button>
+                    <mat-radio-button class="expenditure" value="1"><span
+                            class="font-bold font-['Lexend',_sans-serif] text-red-700">Chi</span></mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="mt-5 mb-5">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Tên danh mục</label>
                 <span class="relative flex items-center">
-                    <i class="far fa-wallet absolute right-[10px] text-[18px]"></i>
-                    <input type="text" id="size-name" formControlName="name"
+                    <i class="far fa-list-alt absolute right-[10px] text-[18px]"></i>
+                    <input type="text" id="name" formControlName="name"
                         class="shadow-sm py-[10px] bg-slate-100 text-slate-900 text-sm rounded-md block p-2.5 w-full"
-                        placeholder="VD: Techcombank" required>
+                        placeholder="VD: Ăn uống" required>
                 </span>
             </div>
             <div class="mt-5 mb-5">
-                <label for="size-name" class="block mb-2 text-sm font-medium text-gray-900">Số dư có sẵn</label>
+                <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Mô tả</label>
                 <span class="relative flex items-center">
-                    <input type="text" id="size-name" formControlName="balance"
+                    <textarea type="text" id="description" formControlName="description"
                         class="shadow-sm py-[10px] bg-slate-100 text-slate-900 text-sm rounded-md block p-2.5 w-full"
-                        placeholder="VD: 50.000" required>
-                    <span class="absolute right-[10px]">VNĐ</span>
+                        placeholder="VD: Chi tiêu cho ăn uống"></textarea>
                 </span>
             </div>
             <div class="mt-5 flex justify-end items-center">

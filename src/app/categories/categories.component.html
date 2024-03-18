@@ -42,9 +42,10 @@
                 </button>
             </div>
 
-            <!-- table list of categories -->
+            <!-- list of categories -->
             <div
                 class="relative overflow-x-auto border border-dashed bg-clip-border rounded-2xl border-stone-200 px-9 py-8">
+                <!-- search input and add category button -->
                 <div class="flex justify-between items-center px-5">
                     <div class="py-5">
                         <span class="relative z-0">
@@ -53,11 +54,14 @@
                                 type="text" placeholder="Tìm kiếm..." />
                         </span>
                     </div>
-                    <div
-                        class="flex justify-center items-center gap-1 bg-[#f2f3f4] px-[12px] py-[8px] rounded-[10px] cursor-pointer text-xs hover:bg-[#d5dae0]">
+                    <button
+                        class="flex justify-center items-center gap-1 bg-[#f2f3f4] px-[12px] py-[8px] rounded-[10px] cursor-pointer text-xs hover:bg-[#d5dae0]"
+                        (click)="addCategory(null)">
                         <i class="far fa-box-open mt-[2px]"></i> Thêm danh mục
-                    </div>
+                    </button>
                 </div>
+
+                <!-- table -->
                 <ng-container *ngIf="categories">
                     <p-table [value]="categories"
                         class="block w-full min-w-[800px] text-sm text-left rtl:text-right text-gray-500">
