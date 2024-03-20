@@ -23,10 +23,14 @@
                 <label class="block mb-2 text-sm font-medium text-gray-900">Loại danh mục</label>
                 <mat-radio-group class="flex gap-8 justify-center items-center" aria-label="Select an option"
                     (change)="onRadioChange($event)">
-                    <mat-radio-button class="income" value="0" checked><span
-                            class="font-bold font-['Lexend',_sans-serif] text-[#4caf50]">Thu</span></mat-radio-button>
-                    <mat-radio-button class="expenditure" value="1"><span
-                            class="font-bold font-['Lexend',_sans-serif] text-red-700">Chi</span></mat-radio-button>
+                    <mat-radio-button
+                        class="income p-2 bg-[#ecf0fa2c] rounded-2xl [box-shadow:rgba(100,_100,_111,_0.2)_0px_7px_29px_0px]"
+                        value="0" checked><span
+                            class="mr-2 font-bold font-['Lexend',_sans-serif] text-[#4caf50]">Thu</span></mat-radio-button>
+                    <mat-radio-button
+                        class="expenditure p-2 bg-[#ecf0fa2c] rounded-2xl [box-shadow:rgba(100,_100,_111,_0.2)_0px_7px_29px_0px]"
+                        value="1"><span
+                            class="mr-2 font-bold font-['Lexend',_sans-serif] text-red-700">Chi</span></mat-radio-button>
                 </mat-radio-group>
             </div>
             <div class="mt-5 mb-5">

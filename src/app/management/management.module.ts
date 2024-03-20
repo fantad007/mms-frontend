@@ -17,6 +17,7 @@ import { WalletDialogComponent } from '../wallets/wallet-dialog/wallet-dialog.co
 import { CategoriesComponent } from '../categories/categories.component';
 import { CategoryDialogComponent } from '../categories/category-dialog/category-dialog.component';
 import { MessageboxComponent } from '../messagebox/messagebox.component';
+import { TransactionComponent } from '../transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MessageboxComponent } from '../messagebox/messagebox.component';
     CategoriesComponent,
     CategoryDialogComponent,
     MessageboxComponent,
+    TransactionComponent,
   ],
   imports: [
     CommonModule,

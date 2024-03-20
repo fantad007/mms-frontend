@@ -36,7 +36,7 @@
     <div class="px-9 py-5 text-sm text-[#9BA7B5]">
         <div class="py-5 hover:text-white cursor-pointer flex items-center">
             <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-coins text-base"></i></div>
-            <a class="ml-3" href="">Thu/Chi</a>
+            <a class="ml-3" href="/transactions">Thu/Chi</a>
         </div>
         <div class="py-5 hover:text-white cursor-pointer flex items-center">
             <div class="w-8 h-8 flex justify-center items-center"><i class="far fa-university text-base"></i>
@@ -72,6 +72,8 @@
 <!-- right content -->
 <div class="pl-[350px] pr-[50px] [transition:0.3s_ease]" [ngClass]="{'content-open': !isOpen}">
     <router-outlet></router-outlet>
+
+    <!-- footer container -->
     <footer class="py-[34px] px-5">
         <div class="flex justify-between items-center">
             <a href="/" class="flex">
