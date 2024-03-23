@@ -16,6 +16,12 @@ export class CategoriesComponent implements OnInit {
 
   public categories: any[] = [];
 
+  public totalSpend: string = '0';
+
+  public totalEarn: string = '0';
+
+  public totalBalance: string = '0';
+
   constructor(
     private http: HttpClient,
     private dialog: MatDialog,
@@ -47,6 +53,8 @@ export class CategoriesComponent implements OnInit {
   getAll(): void {
     this.http.get<any[]>(this.apiUrl + '/categories').subscribe((res) => {
       this.categories = res;
+      this.getTotalSpend();
+      this.getTotalBalance();
     });
   }
 
@@ -78,5 +86,38 @@ export class CategoriesComponent implements OnInit {
         },
       });
     });
+  }
+
+  getTotalSpend(): void {
+    this.http
+      .get<number>(this.apiUrl + '/categories/total-spend')
+      .subscribe((res) => {
+        this.totalSpend = this.formatNumber(res);
+        if (this.totalSpend === '') {
+          this.totalSpend = '0';
+        }
+      });
+  }
+
+  getTotalEarn(): void {
+    this.http
+      .get<number>(this.apiUrl + '/categories/total-earn')
+      .subscribe((res) => {
+        this.totalEarn = this.formatNumber(res);
+        if (this.totalEarn === '') {
+          this.totalEarn = '0';
+        }
+      });
+  }
+
+  getTotalBalance(): void {
+    this.http
+      .get<number>(this.apiUrl + '/wallets/total-balance')
+      .subscribe((res) => {
+        this.totalBalance = this.formatNumber(res);
+        if (this.totalBalance === '') {
+          this.totalBalance = '0';
+        }
+      });
   }
 }

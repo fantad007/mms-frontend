@@ -1,1 +1,81 @@
-<p>transaction works!</p>
+<div class="flex flex-col py-[34px] gap-16">
+
+    <!-- transaction page header -->
+    <div class="w-full flex justify-between items-center">
+        <div>
+            <p class="font-extrabold">Thu/Chi</p>
+            <p class="text-xs text-[#9BA7B5]">Quản lý thông tin thu/chi</p>
+        </div>
+        <div class="flex items-center gap-3">
+            <div
+                class="w-[47px] h-[47px] rounded-2xl flex justify-center items-center border-[1px] border-[solid] border-[#e7e5e4]">
+                <i class="far fa-user text-[#9BA7B5] mt-[1px] ml-[0.5px]"></i>
+            </div>
+            <div
+                class="w-[47px] h-[47px] rounded-2xl flex justify-center items-center border-[1px] border-[solid] border-[#e7e5e4]">
+                <i class="far fa-cog text-[#9BA7B5] mt-[1px] ml-[0.5px]"></i>
+            </div>
+            <div
+                class="w-[47px] h-[47px] rounded-2xl flex justify-center items-center border-[1px] border-[solid] border-[#e7e5e4]">
+                <i class="far fa-bell text-[#9BA7B5] mt-[1px] ml-[0.5px]"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full flex flex-col justify-between gap-8">
+        <div
+            class="relative overflow-x-auto border border-dashed bg-clip-border rounded-2xl border-stone-200 px-9 py-8">
+            <!-- search input and add category button -->
+            <div class="flex justify-between items-center px-5">
+                <div class="py-5">
+                    <span class="relative z-0">
+                        <i class="far fa-search absolute top-[3px] left-[16px] text-[#9BA7B5]"></i>
+                        <input class="pl-10 pr-2 py-[10px] border-[1px] border-solid border-[#e7e5e4] rounded-2xl"
+                            type="text" placeholder="Tìm kiếm..." />
+                    </span>
+                </div>
+                <button
+                    class="flex justify-center items-center gap-1 bg-[#f2f3f4] px-[12px] py-[8px] rounded-[10px] cursor-pointer text-xs hover:bg-[#d5dae0]"
+                    (click)="addTransaction(null)">
+                    <i class="far fa-coins mt-[2px]"></i> Thêm giao dịch
+                </button>
+            </div>
+
+            <!-- table -->
+            <ng-container *ngIf="true">
+                <p-table [value]="[{}]"
+                    class="block w-full min-w-[800px] text-sm text-left rtl:text-right text-gray-500">
+                    <ng-template pTemplate="header">
+                        <tr class="text-xs text-gray-700 uppercase bg-gray-50">
+                            <th scope="col" class="w-[20%] px-6 py-3 text-center">Thời gian giao dịch</th>
+                            <th scope="col" class="w-[15%] px-6 py-3 text-left">Danh mục</th>
+                            <th scope="col" class="w-[33%] px-6 py-3 text-left">Nội dung giao dịch</th>
+                            <th scope="col" class="w-[12%] px-6 py-3 text-left">Số tiền</th>
+                            <th scope="col" class="w-[20%] px-6 py-3 text-center">Thao tác</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-category let-rowIndex="rowIndex">
+                        <tr class="bg-white border-b">
+                            <td scope="row" class="px-6 py-4 text-center">
+                                <span class="px-[12px] py-[8px] rounded-[10px]">
+                                    <i class="far fa-clock mt-[2px] mr-1"></i><span>23 - 02 - 1998</span>
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-left text-gray-900 font-medium whitespace-nowrap">Ăn uống</td>
+                            <ng-container [ngSwitch]="category.type">
+                                <td class="px-6 py-4">
+                                    Ăn tối tại quán cơm Nghi Tàm gần nhà
+                                </td>
+                                <td class="px-6 py-4">30.000 đ</td>
+                            </ng-container>
+                            <td class="px-6 py-4 flex justify-center items-center gap-3">
+                                <i class="far fa-pencil-alt cursor-pointer"></i>
+                                <i class="far fa-trash-alt cursor-pointer"></i>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </ng-container>
+        </div>
+    </div>
+</div>

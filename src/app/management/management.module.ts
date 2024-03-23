@@ -9,6 +9,8 @@ import {
   MAT_RADIO_DEFAULT_OPTIONS,
   MatRadioModule,
 } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 import { TableModule } from 'primeng/table';
 
@@ -18,6 +20,7 @@ import { CategoriesComponent } from '../categories/categories.component';
 import { CategoryDialogComponent } from '../categories/category-dialog/category-dialog.component';
 import { MessageboxComponent } from '../messagebox/messagebox.component';
 import { TransactionComponent } from '../transaction/transaction.component';
+import { TransactionDialogComponent } from '../transaction/transaction-dialog/transaction-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { TransactionComponent } from '../transaction/transaction.component';
     CategoryDialogComponent,
     MessageboxComponent,
     TransactionComponent,
+    TransactionDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +42,8 @@ import { TransactionComponent } from '../transaction/transaction.component';
     MatSnackBarModule,
     MatButtonModule,
     MatRadioModule,
+    MatFormFieldModule,
+    MatSelectModule,
 
     // primeng
     TableModule,
