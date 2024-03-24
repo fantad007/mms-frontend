@@ -11,6 +11,9 @@ import {
 } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 import { TableModule } from 'primeng/table';
 
@@ -44,6 +47,9 @@ import { TransactionDialogComponent } from '../transaction/transaction-dialog/tr
     MatRadioModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
 
     // primeng
     TableModule,

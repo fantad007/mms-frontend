@@ -42,32 +42,30 @@
             </div>
 
             <!-- table -->
-            <ng-container *ngIf="true">
-                <p-table [value]="[{}]"
+            <ng-container *ngIf="transactions">
+                <p-table [value]="transactions"
                     class="block w-full min-w-[800px] text-sm text-left rtl:text-right text-gray-500">
                     <ng-template pTemplate="header">
                         <tr class="text-xs text-gray-700 uppercase bg-gray-50">
-                            <th scope="col" class="w-[20%] px-6 py-3 text-center">Thời gian giao dịch</th>
+                            <th scope="col" class="w-[20%] px-6 py-3 text-left">Thời gian giao dịch</th>
                             <th scope="col" class="w-[15%] px-6 py-3 text-left">Danh mục</th>
                             <th scope="col" class="w-[33%] px-6 py-3 text-left">Nội dung giao dịch</th>
                             <th scope="col" class="w-[12%] px-6 py-3 text-left">Số tiền</th>
                             <th scope="col" class="w-[20%] px-6 py-3 text-center">Thao tác</th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-category let-rowIndex="rowIndex">
-                        <tr class="bg-white border-b">
-                            <td scope="row" class="px-6 py-4 text-center">
+                    <ng-template pTemplate="body" let-transaction let-rowIndex="rowIndex">
+                        <tr class="bg-white border-b" [ngClass]="{'border-b': rowIndex !== transactions.length - 1}">
+                            <td scope="row" class="px-6 py-4 text-left">
                                 <span class="px-[12px] py-[8px] rounded-[10px]">
-                                    <i class="far fa-clock mt-[2px] mr-1"></i><span>23 - 02 - 1998</span>
+                                    <i class="far fa-clock mt-[2px] mr-1"></i>
+                                    <span>{{ transaction.atTime | date: 'dd - MM - yyyy' }}</span>
                                 </span>
                             </td>
-                            <td class="px-6 py-4 text-left text-gray-900 font-medium whitespace-nowrap">Ăn uống</td>
-                            <ng-container [ngSwitch]="category.type">
-                                <td class="px-6 py-4">
-                                    Ăn tối tại quán cơm Nghi Tàm gần nhà
-                                </td>
-                                <td class="px-6 py-4">30.000 đ</td>
-                            </ng-container>
+                            <td class="px-6 py-4 text-left text-gray-900 font-medium whitespace-nowrap">{{
+                                transaction.categoryName }}</td>
+                            <td class="px-6 py-4">{{ transaction.description }}</td>
+                            <td class="px-6 py-4">{{ formatNumber(transaction.amount) }} đ</td>
                             <td class="px-6 py-4 flex justify-center items-center gap-3">
                                 <i class="far fa-pencil-alt cursor-pointer"></i>
                                 <i class="far fa-trash-alt cursor-pointer"></i>

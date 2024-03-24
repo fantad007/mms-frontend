@@ -15,6 +15,10 @@ export class TransactionDialogComponent implements OnInit {
 
   transactionForm: FormGroup = new FormGroup({});
 
+  public wallets: any[] = [];
+
+  public categories: any[] = [];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private http: HttpClient,
@@ -25,14 +29,64 @@ export class TransactionDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.transactionForm = this.formBuilder.group({
-      wallet: [null],
-      category: [null],
+      wallets: [null],
+      categories: [null],
       amount: [null],
+      transactionTime: [null],
       description: [''],
+    });
+    this.getAllWallets();
+    this.getAllCategories();
+    this.setDefaultDate();
+  }
+
+  getAllWallets(): void {
+    this.http.get<any[]>(this.apiUrl + '/wallets').subscribe((res) => {
+      this.wallets = res;
+      this.transactionForm.controls['wallets'].setValue(
+        res.map((wallet) => wallet.id)
+      );
     });
   }
 
-  saveAndUpdate(): void {}
+  getAllCategories(): void {
+    this.http.get<any[]>(this.apiUrl + '/categories').subscribe((res) => {
+      this.categories = res;
+      this.transactionForm.controls['categories'].setValue(
+        res.map((category) => category.id)
+      );
+    });
+  }
+
+  setDefaultDate(): void {
+    this.transactionForm.controls['transactionTime'].setValue(new Date());
+  }
+
+  saveAndUpdate(): void {
+    const transactionParam = {
+      walletId: this.transactionForm.controls['wallets'].value,
+      categoryId: this.transactionForm.controls['categories'].value,
+      amount: this.transactionForm.controls['amount'].value,
+      atTime: this.transactionForm.controls['transactionTime'].value,
+      description: this.transactionForm.controls['description'].value,
+    };
+    if (!this.data.id) {
+      this.http
+        .post<any>(this.apiUrl + '/transaction', transactionParam)
+        .subscribe({
+          next: () => {
+            this.matSnackBar.open('Tạo giao dịch thành công', '', {
+              duration: 2000,
+              horizontalPosition: 'right',
+              verticalPosition: 'top',
+            });
+            this.dialogRef.close();
+          },
+        });
+    } else {
+      console.log('Update');
+    }
+  }
 
   closeDialog(): void {
     this.dialogRef.close();

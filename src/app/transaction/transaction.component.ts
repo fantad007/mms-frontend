@@ -13,6 +13,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class TransactionComponent implements OnInit {
   private apiUrl = environment.apiUrl;
 
+  public transactions: any[] = [];
+
   public totalBalance: string = '0';
 
   constructor(
@@ -22,12 +24,12 @@ export class TransactionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getTotalBalance();
+    this.getAll();
   }
 
   addTransaction(id: number | null): void {
     let dialogRef = this.dialog.open(TransactionDialogComponent, {
-      width: '350px',
+      width: '400px',
       height: 'fit-content',
       enterAnimationDuration: 500,
       exitAnimationDuration: 500,
@@ -43,7 +45,12 @@ export class TransactionComponent implements OnInit {
     });
   }
 
-  getAll(): void {}
+  getAll(): void {
+    this.http.get<any[]>(this.apiUrl + '/transactions').subscribe((res) => {
+      this.transactions = res;
+      this.getTotalBalance();
+    });
+  }
 
   getTotalBalance(): void {
     this.http

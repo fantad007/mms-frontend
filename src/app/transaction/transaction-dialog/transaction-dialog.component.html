@@ -19,45 +19,68 @@
     </div>
     <div>
         <form [formGroup]="transactionForm">
+            <!-- select wallet and category -->
             <div class="grid grid-cols-2 gap-2 mt-5 mb-5">
+                <!-- select wallet -->
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Chọn ví</label>
                     <span class="relative flex items-center">
                         <mat-form-field appearance="outline"
                             class="shadow-sm bg-slate-100 text-slate-900 text-sm rounded-md block w-full h-fit">
-                            <mat-select formControlName="wallet">
-                                <mat-option>None</mat-option>
-                                <mat-option value="option1">Tiền mặt</mat-option>
-                                <mat-option value="option2">Bidv</mat-option>
-                                <mat-option value="option3">Techcombank</mat-option>
+                            <mat-select formControlName="wallets">
+                                <mat-option *ngFor="let wallet of wallets" [value]="wallet.id">{{ wallet.name
+                                    }}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </span>
                 </div>
+
+                <!-- select category -->
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Chọn danh mục</label>
                     <span class="relative flex items-center">
                         <mat-form-field appearance="outline"
                             class="shadow-sm bg-slate-100 text-slate-900 text-sm rounded-md block w-full h-fit">
-                            <mat-select formControlName="category">
-                                <mat-option>None</mat-option>
-                                <mat-option value="option1">Ăn uống</mat-option>
-                                <mat-option value="option2">Xăng xe</mat-option>
-                                <mat-option value="option3">Lương</mat-option>
+                            <mat-select formControlName="categories">
+                                <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name
+                                    }}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </span>
                 </div>
             </div>
-            <div class="mt-5 mb-5">
-                <label for="size-name" class="block mb-2 text-sm font-medium text-gray-900">Số tiền</label>
-                <span class="relative flex items-center">
-                    <input type="text" id="size-name" formControlName="amount"
-                        class="shadow-sm py-[10px] bg-slate-100 text-slate-900 text-sm rounded-md block p-2.5 w-full"
-                        placeholder="VD: 250.000" required>
-                    <span class="absolute right-[10px]">VNĐ</span>
-                </span>
+
+            <!-- enter amount and pick time for transaction -->
+            <div class="grid grid-cols-2 gap-2 mt-5 mb-5">
+                <!-- enter amount of transaction -->
+                <div>
+                    <label for="size-name" class="block mb-2 text-sm font-medium text-gray-900">Số tiền</label>
+                    <span class="relative flex items-center">
+                        <input type="text" id="size-name" formControlName="amount"
+                            class="shadow-sm py-[10px] bg-slate-100 text-slate-900 text-sm rounded-md block p-2.5 w-full"
+                            placeholder="VD: 250.000" required>
+                        <span class="absolute right-[10px]">VNĐ</span>
+                    </span>
+                </div>
+
+                <!-- pick time of transaction -->
+                <div>
+                    <label for="size-name" class="block mb-2 text-sm font-medium text-gray-900">Thời điểm giao
+                        dịch</label>
+                    <span class="relative flex items-center">
+                        <mat-form-field appearance="outline"
+                            class="shadow-sm bg-slate-100 text-slate-900 text-sm rounded-md block w-full h-fit">
+                            <input matInput [matDatepicker]="picker" formControlName="transactionTime"
+                                class="shadow-sm py-[10px] bg-slate-100 text-slate-900 text-sm rounded-md block p-2.5 w-full">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </span>
+                </div>
             </div>
+
+            <!-- enter transaction description -->
             <div class="mt-5 mb-5">
                 <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Nội dung giao dịch</label>
                 <span class="relative flex items-center">
@@ -66,6 +89,8 @@
                         placeholder="VD: Ăn tại Nollowa cùng bạn bè"></textarea>
                 </span>
             </div>
+
+            <!-- save and update button -->
             <div class="mt-5 flex justify-end items-center">
                 <button type="button" (click)="saveAndUpdate()"
                     class="text-white bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-8 py-2.5 text-center me-2 mb-2">Lưu</button>

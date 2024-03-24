@@ -1,6 +1,6 @@
 ::ng-deep .mat-mdc-option .mdc-list-item__primary-text {
     font-family: "Lexend", sans-serif !important;
-    font-size: 14px !important;
+    font-size: 12px !important;
     font-weight: 500 !important;
 }
 
@@ -50,5 +50,23 @@
 }
 
 ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #f1f5f9 !important;
+}
+
+::ng-deep div.mat-mdc-select-panel::-webkit-scrollbar {
+    width: 0 !important;
+}
+
+::ng-deep div.mat-mdc-select-panel {
+    margin-top: 5px;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    width: 100%;
+    max-height: 275px;
+    outline: 0;
+    overflow: auto;
+    padding: 8px 0;
+    border-radius: 8px 8px 16px 16px !important;
+    box-sizing: border-box;
+    position: static;
     background-color: #f1f5f9 !important;
 }
